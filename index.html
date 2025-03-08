@@ -339,25 +339,37 @@
             contactsText.innerText = "Контакти Автора (для побажань або питань):";
             document.body.appendChild(contactsText);
 
-            let contactsList = document.createElement("ul");
-            let contacts = [
-                "TikTok - @yramorg",
-                "Telegram - @YraMorg",
-                "Instagram - @yramorg",
-                "YouTube - @YraMorg and @YoungTheRise",
-                "Discord - YraMorg",
-                "Steam - YraMorg",
-                "Twitch - YraMorg",
-                "BattleNet - YraMorg"
-            ];
-            
-            contacts.forEach(contact => {
-                let li = document.createElement("li");
-                li.innerText = contact;
-                contactsList.appendChild(li);
-            });
+// Створюємо список контактів
+let contactsList = document.createElement("ul");
+let contacts = [
+    "TikTok - @yramorg",
+    "Telegram - @YraMorg",
+    "Instagram - @yramorg",
+    "YouTube - @YraMorg and @YoungTheRise",
+    "Discord - YraMorg",
+    "Steam - YraMorg",
+    "Twitch - YraMorg",
+    "BattleNet - YraMorg"
+];
 
-            document.body.appendChild(contactsList);
+// Додаємо контакти в список
+contacts.forEach(contact => {
+    let listItem = document.createElement("li");
+    listItem.innerText = contact;
+    contactsList.appendChild(listItem);
+});
+
+// Створюємо зображення
+let contactImage = document.createElement("img");
+contactImage.src = "CatYura2/13.jpg";  // Додайте правильне розширення файлу (jpg, png тощо)
+contactImage.alt = "Контакти Автора";
+contactImage.style.width = "200px"; // Опціонально, щоб задати розмір
+contactImage.style.marginTop = "20px";
+
+// Додаємо зображення та список контактів на сторінку
+document.body.appendChild(contactImage);
+document.body.appendChild(contactsList);
+
         }
     </script>
 </head>
