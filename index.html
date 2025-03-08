@@ -66,6 +66,14 @@
                 newButton.style.cursor = "pointer";
                 newButton.style.borderRadius = "10px";
                 newButton.onclick = changeToFinalContent;
+                
+                let gratitudeImage = document.createElement("img");
+                gratitudeImage.src = "CatYura2/2.jpg"; // Замініть на правильний шлях
+                gratitudeImage.alt = "Вдячність";
+                gratitudeImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
+                gratitudeImage.style.marginTop = "30px";
+
+                document.body.appendChild(gratitudeImage);
                 document.body.appendChild(newButton);
             }
         }
