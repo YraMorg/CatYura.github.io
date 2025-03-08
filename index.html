@@ -329,6 +329,14 @@
             loveButton.style.cursor = "pointer";
             loveButton.style.borderRadius = "10px";
             loveButton.onclick = showContacts;
+            
+            let heartImage = document.createElement("img");
+            heartImage.src = "CatYura2/12.jpg"; // Замініть на правильний шлях
+            heartImage.alt = "Серце підтримки";
+            heartImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
+            heartImage.style.marginTop = "30px";
+            
+            document.body.appendChild(heartImage);
             document.body.appendChild(loveButton);
         }
 
