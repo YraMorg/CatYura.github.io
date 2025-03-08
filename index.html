@@ -127,6 +127,14 @@
             gameButton.style.cursor = "pointer";
             gameButton.style.borderRadius = "10px";
             gameButton.onclick = startHeartGame;
+            
+            let inspirationImage = document.createElement("img");
+            inspirationImage.src = "CatYura2/5.jpg"; // Замініть на правильний шлях
+            inspirationImage.alt = "Натхнення";
+            inspirationImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
+            inspirationImage.style.marginTop = "30px";
+
+            document.body.appendChild(inspirationImage);
             document.body.appendChild(gameButton);
         }
 
@@ -198,7 +206,7 @@
             endButton.onclick = showCuteMessage;
             
             let knowledgeImage = document.createElement("img");
-            knowledgeImage.src = "CatYura2/7.jpg"; // Замініть на правильний шлях
+            knowledgeImage.src = "CatYura2/6.jpg"; // Замініть на правильний шлях
             knowledgeImage.alt = "Знання";
             knowledgeImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
             knowledgeImage.style.marginTop = "30px";
