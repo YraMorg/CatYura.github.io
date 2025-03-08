@@ -87,6 +87,14 @@
             finalButton.style.cursor = "pointer";
             finalButton.style.borderRadius = "10px";
             finalButton.onclick = startGamePrompt;
+            
+            let sunshineImage = document.createElement("img");
+            sunshineImage.src = "CatYura2/3.jpg"; // Замініть на правильний шлях
+            sunshineImage.alt = "Сонячні промені";
+            sunshineImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
+            sunshineImage.style.marginTop = "30px";
+
+            document.body.appendChild(sunshineImage);
             document.body.appendChild(finalButton);
         }
 
@@ -107,6 +115,14 @@
             gameButton.style.cursor = "pointer";
             gameButton.style.borderRadius = "10px";
             gameButton.onclick = changeToGamePrompt;
+            
+            let creativityImage = document.createElement("img");
+            creativityImage.src = "CatYura2/4.jpg"; // Замініть на правильний шлях
+            creativityImage.alt = "Креативність";
+            creativityImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
+            creativityImage.style.marginTop = "30px";
+
+            document.body.appendChild(creativityImage);
             document.body.appendChild(gameButton);
         }
 
