@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для моєї киці</title>
+    <style>
+        body {
+            background-color: #FFC0CB; /* Світло-рожева фон */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        p {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 24px;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        #heart {
+            font-size: 40px; /* Збільшуємо розмір серця */
+        }
+    </style>
+    <script>
+        let clickCount = 0;  // Лічильник натискань
+        const totalClicks = 9;
+
+        function changeContent() {
+            let textElement = document.getElementById("text");
+            let buttonElement = document.getElementById("button");
+
+            if (textElement.innerText === "Привіт") {
+                textElement.innerText = "О, так ти киця?";
+                buttonElement.innerText = "Мяуу";
+            } else if (textElement.innerText === "О, так ти киця?") {
+                document.body.innerHTML = "";
+
+                let newText = document.createElement("p");
+                newText.innerText = "Я люблю киць";
+                document.body.appendChild(newText);
+
+                let newButton = document.createElement("button");
+                newButton.innerText = "Смущаєш";
+                newButton.style.marginTop = "20px";
+                newButton.style.padding = "15px 30px";
+                newButton.style.fontSize = "24px";
+                newButton.style.border = "none";
+                newButton.style.backgroundColor = "white";
+                newButton.style.cursor = "pointer";
+                newButton.style.borderRadius = "10px";
+                newButton.onclick = changeToFinalContent;
+                document.body.appendChild(newButton);
+            }
+        }
+
+        function changeToFinalContent() {
+            document.body.innerHTML = "";
+
+            let finalText = document.createElement("p");
+            finalText.innerText = "Надіюсь ти хороша та слухняна киця?";
+            document.body.appendChild(finalText);
+
+            let finalButton = document.createElement("button");
+            finalButton.innerText = "Ну так";
+            finalButton.style.marginTop = "20px";
+            finalButton.style.padding = "15px 30px";
+            finalButton.style.fontSize = "24px";
+            finalButton.style.border = "none";
+            finalButton.style.backgroundColor = "white";
+            finalButton.style.cursor = "pointer";
+            finalButton.style.borderRadius = "10px";
+            finalButton.onclick = startGamePrompt;
+            document.body.appendChild(finalButton);
+        }
+
+        function startGamePrompt() {
+            document.body.innerHTML = "";
+
+            let gameText = document.createElement("p");
+            gameText.innerText = "Тоді давай зіграємо в гру";
+            document.body.appendChild(gameText);
+
+            let gameButton = document.createElement("button");
+            gameButton.innerText = "Яку?";
+            gameButton.style.marginTop = "20px";
+            gameButton.style.padding = "15px 30px";
+            gameButton.style.fontSize = "24px";
+            gameButton.style.border = "none";
+            gameButton.style.backgroundColor = "white";
+            gameButton.style.cursor = "pointer";
+            gameButton.style.borderRadius = "10px";
+            gameButton.onclick = changeToGamePrompt;
+            document.body.appendChild(gameButton);
+        }
+
+        function changeToGamePrompt() {
+            document.body.innerHTML = "";
+
+            let gameText = document.createElement("p");
+            gameText.innerText = "Потрібно спіймати серце";
+            document.body.appendChild(gameText);
+
+            let gameButton = document.createElement("button");
+            gameButton.innerText = "Давай спробуємо";
+            gameButton.style.marginTop = "20px";
+            gameButton.style.padding = "15px 30px";
+            gameButton.style.fontSize = "24px";
+            gameButton.style.border = "none";
+            gameButton.style.backgroundColor = "white";
+            gameButton.style.cursor = "pointer";
+            gameButton.style.borderRadius = "10px";
+            gameButton.onclick = startHeartGame;
+            document.body.appendChild(gameButton);
+        }
+
+        function startHeartGame() {
+            document.body.innerHTML = "";
+            clickCount = 0;  // Скидаємо лічильник
+            updateCounter();
+
+            createHeart();  // Створюємо перше серце
+        }
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.innerText = "❤️";
+            heart.id = "heart";
+            heart.style.position = "absolute";  // Розміщуємо серце в абсолютному позиціюванні
+
+            // Рандомні координати для серця
+            const randomX = Math.random() * window.innerWidth;
+            const randomY = Math.random() * window.innerHeight;
+
+            heart.style.left = `${randomX}px`;
+            heart.style.top = `${randomY}px`;
+
+            heart.onclick = handleHeartClick;  // Додаємо обробник кліку
+
+            document.body.appendChild(heart);
+        }
+
+        function handleHeartClick() {
+            clickCount++;  // Збільшуємо лічильник
+            updateCounter();
+
+            this.remove();  // Видаляємо серце після натискання
+
+            if (clickCount < totalClicks) {
+                createHeart();  // Створюємо нове серце
+            } else {
+                endGame();  // Завершуємо гру
+            }
+        }
+
+        function updateCounter() {
+            let counter = document.getElementById("counter");
+            if (!counter) {
+                counter = document.createElement("p");
+                counter.id = "counter";
+                document.body.appendChild(counter);
+            }
+            counter.innerText = `${clickCount}/${totalClicks}`;
+        }
+
+        function endGame() {
+            document.body.innerHTML = "";
+
+            let endText = document.createElement("p");
+            endText.innerText = "Здається ти зловила моє серце";
+            document.body.appendChild(endText);
+
+            let endButton = document.createElement("button");
+            endButton.innerText = "Я так і хотіла";
+            endButton.style.marginTop = "20px";
+            endButton.style.padding = "15px 30px";
+            endButton.style.fontSize = "24px";
+            endButton.style.border = "none";
+            endButton.style.backgroundColor = "white";
+            endButton.style.cursor = "pointer";
+            endButton.style.borderRadius = "10px";
+            endButton.onclick = showCuteMessage;
+            document.body.appendChild(endButton);
+        }
+
+        function showCuteMessage() {
+            document.body.innerHTML = "";
+
+            let cuteText = document.createElement("p");
+            cuteText.innerText = "Пхаха, це мило киця";
+            document.body.appendChild(cuteText);
+
+            let cuteButton = document.createElement("button");
+            cuteButton.innerText = "мррр";
+            cuteButton.style.marginTop = "20px";
+            cuteButton.style.padding = "15px 30px";
+            cuteButton.style.fontSize = "24px";
+            cuteButton.style.border = "none";
+            cuteButton.style.backgroundColor = "white";
+            cuteButton.style.cursor = "pointer";
+            cuteButton.style.borderRadius = "10px";
+            cuteButton.onclick = showLoveMessage;
+            document.body.appendChild(cuteButton);
+        }
+
+        function showLoveMessage() {
+            document.body.innerHTML = "";
+
+            let loveText = document.createElement("p");
+            loveText.innerText = "Кохаю тебе";
+            document.body.appendChild(loveText);
+
+            let loveButton1 = document.createElement("button");
+            loveButton1.innerText = "Я теж тебе кохаю";
+            loveButton1.style.marginTop = "20px";
+            loveButton1.style.padding = "15px 30px";
+            loveButton1.style.fontSize = "24px";
+            loveButton1.style.border = "none";
+            loveButton1.style.backgroundColor = "white";
+            loveButton1.style.cursor = "pointer";
+            loveButton1.style.borderRadius = "10px";
+            loveButton1.onclick = showThankYouMessage;
+
+            let loveButton2 = document.createElement("button");
+            loveButton2.innerText = "Ну норм";
+            loveButton2.style.marginTop = "20px";
+            loveButton2.style.padding = "15px 30px";
+            loveButton2.style.fontSize = "24px";
+            loveButton2.style.border = "none";
+            loveButton2.style.backgroundColor = "white";
+            loveButton2.style.cursor = "pointer";
+            loveButton2.style.borderRadius = "10px";
+            loveButton2.onclick = showGrumpyMessage;
+
+            document.body.appendChild(loveButton1);
+            document.body.appendChild(loveButton2);
+        }
+
+        function showThankYouMessage() {
+            document.body.innerHTML = "";
+
+            let thankYouText = document.createElement("p");
+            thankYouText.innerText = "Тримай за це квіточку";
+            document.body.appendChild(thankYouText);
+
+            let thankYouButton = document.createElement("button");
+            thankYouButton.innerText = "Дякую❤";
+            thankYouButton.style.marginTop = "20px";
+            thankYouButton.style.padding = "15px 30px";
+            thankYouButton.style.fontSize = "24px";
+            thankYouButton.style.border = "none";
+            thankYouButton.style.backgroundColor = "white";
+            thankYouButton.style.cursor = "pointer";
+            thankYouButton.style.borderRadius = "10px";
+            thankYouButton.onclick = showMarch8Message;
+            document.body.appendChild(thankYouButton);
+        }
+
+        function showGrumpyMessage() {
+            document.body.innerHTML = "";
+
+            let grumpyText = document.createElement("p");
+            grumpyText.innerText = "Злюка";
+            document.body.appendChild(grumpyText);
+
+            let grumpyButton = document.createElement("button");
+            grumpyButton.innerText = "Ну добре, я теж тебе дуже кохаю котик";
+            grumpyButton.style.marginTop = "20px";
+            grumpyButton.style.padding = "15px 30px";
+            grumpyButton.style.fontSize = "24px";
+            grumpyButton.style.border = "none";
+            grumpyButton.style.backgroundColor = "white";
+            grumpyButton.style.cursor = "pointer";
+            grumpyButton.style.borderRadius = "10px";
+            grumpyButton.onclick = showThankYouMessage;
+            document.body.appendChild(grumpyButton);
+        }
+
+        function showMarch8Message() {
+            document.body.innerHTML = "";
+
+            let march8Text = document.createElement("p");
+            march8Text.innerText = "8 березня квіточкая🌹";
+            document.body.appendChild(march8Text);
+
+            let march8Button = document.createElement("button");
+            march8Button.innerText = "Це дуже мило";
+            march8Button.style.marginTop = "20px";
+            march8Button.style.padding = "15px 30px";
+            march8Button.style.fontSize = "24px";
+            march8Button.style.border = "none";
+            march8Button.style.backgroundColor = "white";
+            march8Button.style.cursor = "pointer";
+            march8Button.style.borderRadius = "10px";
+            march8Button.onclick = showSadMessage;
+            document.body.appendChild(march8Button);
+        }
+
+        function showSadMessage() {
+            document.body.innerHTML = "";
+
+            let sadText = document.createElement("p");
+            sadText.innerText = "Якщо тобі буде сумно, то пам'ятай, що я завжди з тобою в твоєму серці";
+            document.body.appendChild(sadText);
+
+            let loveButton = document.createElement("button");
+            loveButton.innerText = "Добре мій любий котик";
+            loveButton.style.marginTop = "20px";
+            loveButton.style.padding = "15px 30px";
+            loveButton.style.fontSize = "24px";
+            loveButton.style.border = "none";
+            loveButton.style.backgroundColor = "white";
+            loveButton.style.cursor = "pointer";
+            loveButton.style.borderRadius = "10px";
+            loveButton.onclick = showContacts;
+            document.body.appendChild(loveButton);
+        }
+
+        function showContacts() {
+            document.body.innerHTML = "";
+
+            let contactsText = document.createElement("p");
+            contactsText.innerText = "Контакти Автора (для побажань або питань):";
+            document.body.appendChild(contactsText);
+
+            let contactsList = document.createElement("ul");
+            let contacts = [
+                "TikTok - @yramorg",
+                "Telegram - @YraMorg",
+                "Instagram - @yramorg",
+                "YouTube - @YraMorg and @YoungTheRise",
+                "Discord - YraMorg",
+                "Steam - YraMorg",
+                "Twitch - YraMorg",
+                "BattleNet - YraMorg"
+            ];
+            
+            contacts.forEach(contact => {
+                let li = document.createElement("li");
+                li.innerText = contact;
+                contactsList.appendChild(li);
+            });
+
+            document.body.appendChild(contactsList);
+        }
+    </script>
+</head>
+<body>
+    <p id="text">Привіт</p>
+    <button id="button" onclick="changeContent()">Мяу</button>
+</body>
+</html>
