@@ -196,6 +196,14 @@
             endButton.style.cursor = "pointer";
             endButton.style.borderRadius = "10px";
             endButton.onclick = showCuteMessage;
+            
+            let knowledgeImage = document.createElement("img");
+            knowledgeImage.src = "CatYura2/7.jpg"; // Замініть на правильний шлях
+            knowledgeImage.alt = "Знання";
+            knowledgeImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
+            knowledgeImage.style.marginTop = "30px";
+
+            document.body.appendChild(knowledgeImage);
             document.body.appendChild(endButton);
         }
 
