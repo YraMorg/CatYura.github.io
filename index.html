@@ -247,7 +247,14 @@
             loveButton2.style.cursor = "pointer";
             loveButton2.style.borderRadius = "10px";
             loveButton2.onclick = showGrumpyMessage;
+            
+            let courageImage = document.createElement("img");
+            courageImage.src = "CatYura2/12.jpg"; // Замініть на правильний шлях
+            courageImage.alt = "Серце підтримки";
+            courageImage.style.width = "300px"; // Можна змінити розмір, якщо потрібно
+            courageImage.style.marginTop = "30px";
 
+            document.body.appendChild(courageImage);
             document.body.appendChild(loveButton1);
             document.body.appendChild(loveButton2);
         }
